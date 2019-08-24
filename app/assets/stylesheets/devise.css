@@ -1,19 +1,28 @@
+.auth-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+.brand-header {
+  margin-top: 80px;
+  text-align: center;
+}
 .container.devise {
   padding-top: 90px;
 }
-.panel-login {
+.panel-auth {
+  margin-top: 40px;
   border-color: #ccc;
   -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
   -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
   box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
 }
-.panel-login>.panel-heading {
+.panel-auth>.panel-heading {
   color: #00415d;
   background-color: #fff;
   border-color: #fff;
   text-align:center;
 }
-.panel-login>.panel-heading a{
+.panel-auth>.panel-heading a{
   text-decoration: none;
   color: #666;
   font-weight: bold;
@@ -22,11 +31,11 @@
   -moz-transition: all 0.1s linear;
   transition: all 0.1s linear;
 }
-.panel-login>.panel-heading a.active{
+.panel-auth>.panel-heading a.active{
   color: #678bb1;
   font-size: 18px;
 }
-.panel-login>.panel-heading hr{
+.panel-auth>.panel-heading hr{
   margin-top: 10px;
   margin-bottom: 0px;
   clear: both;
@@ -37,7 +46,11 @@
   background-image: -ms-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
   background-image: -o-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
 }
-.panel-login input[type="text"],.panel-login input[type="email"],.panel-login input[type="password"] {
+.panel-auth .error-field {
+  color: red;
+  margin-bottom: 20px;
+}
+.panel-auth input[type="text"],.panel-auth input[type="email"],.panel-auth input[type="password"] {
   height: 45px;
   border: 1px solid #ddd;
   font-size: 16px;
@@ -45,15 +58,15 @@
   -moz-transition: all 0.1s linear;
   transition: all 0.1s linear;
 }
-.panel-login input:hover,
-.panel-login input:focus {
+.panel-auth input:hover,
+.panel-auth input:focus {
   outline:none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
   border-color: #ccc;
 }
-.panel-login .btn-login {
+.panel-auth .btn-login {
   background-color: #678bb1;
   outline: none;
   color: #fff;
@@ -77,7 +90,7 @@
   color: #666;
 }
 
-.panel-login .btn-register {
+.panel-auth .btn-register {
   background-color: #678bb1;
   outline: none;
   color: #fff;
@@ -87,8 +100,4 @@
   padding: 14px 0;
   text-transform: uppercase;
   border-color: #678bb1;
-}
-.btn-register:hover,
-.btn-register:focus {
-
 }

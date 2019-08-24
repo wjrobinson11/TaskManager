@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
-  root to: 'pages#dashboard'
+  root to: 'tasks#index'
   get '/dashboard', to: 'pages#dashboard'
+  
   devise_for :users, controllers: {
     registrations: "users/registrations",
     sessions: "users/sessions"
   }
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  devise_scope :user do
+    get "/users", to: "users/registrations#index"
+    delete "/users/:id", to: "users/registrations#destroy", as: "destroy_user_registration"
+  end
+
+  resources :tasks
+  resources :companies
 end
