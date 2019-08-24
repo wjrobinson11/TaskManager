@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 if Rails.env.development?
+	puts "Running seed file..."
 	# Clear data
 	User.destroy_all
 	Company.destroy_all
@@ -14,17 +15,42 @@ if Rails.env.development?
 
 	# Create SuperAdmin
 	SuperAdmin.create!(
-		email: 'admin@serviceshift.com',
+		email: 'admin@taskmanager.com',
 		password: 'admin1234'
 	)
 
 	# Create company 1
-	c1 = Company.create!(name: "Billy Go")
+	c1 = Company.create!(name: "Company 1")
 	# Create TaskAdmin for company 1
-	TaskAdmin.create!(email: 'task@billygo.com', password: 'task1234', company_id: c1.id)
+	TaskAdmin.create!(email: 'task@company1.com', password: 'task1234', company_id: c1.id)
+	Task.create!(
+		name: "Leaky Faucet",
+		description: "Faucet has been leaking for months due to cracked pipes.",
+		price: 100.0,
+		company_id: c1.id
+	)
+	Task.create!(
+		name: "Radiator Broken",
+		description: "Radiator stopped working and needs new valve.",
+		price: 59.99,
+		company_id: c1.id
+	)
 
 	# Create company 2
-	c2 = Company.create!(name: "Berkeys")
+	c2 = Company.create!(name: "Company 2")
 	# Create TaskAdmin for company 2
-	TaskAdmin.create!(email: 'task@berkeys.com', password: 'task1234', company_id: c2.id)
+	TaskAdmin.create!(email: 'task@company2.com', password: 'task1234', company_id: c2.id)
+	Task.create!(
+		name: "Shower Installation",
+		description: "Need to install new walk in shower 5'' by 8''",
+		price: 4000.0,
+		company_id: c2.id
+	)
+	Task.create!(
+		name: "Hot Water Heater Replacement",
+		description: "Replace old water heater with new one.",
+		price: 1000,
+		company_id: c2.id
+	)
+	puts "Successfully ran seed file!"
 end

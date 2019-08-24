@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Users</h1>
-<%= link_to '+ New User', new_user_registration_path, class: 'new-resource-link' %>
+<%= link_to '+ New User', new_user_path, class: 'new-resource-link' %>
 <table class='table table-striped'>
   <thead>
     <tr>
@@ -18,8 +18,8 @@
         <td><%= user.email %></td>
         <td><%= user.type %></td>
         <td><%= user.company.try(:name) %></td>
-        <td><%= link_to 'Edit', edit_user_registration_path(user) %></td>
-        <td><%= link_to 'Destroy', destroy_user_registration_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', "/users/#{user.id}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

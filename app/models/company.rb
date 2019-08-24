@@ -9,6 +9,9 @@
 #
 
 class Company < ApplicationRecord
-	has_many :task_admins
-	has_many :tasks
+	has_many :task_admins, dependent: :destroy
+	has_many :tasks, dependent: :destroy
+
+	validates :name, presence: true, uniqueness: {case_sensitive: false}
+
 end

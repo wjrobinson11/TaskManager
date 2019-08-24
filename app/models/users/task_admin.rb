@@ -16,5 +16,5 @@
 #
 
 class TaskAdmin < User
-
+	validates :company, presence: true
 end

@@ -17,11 +17,13 @@ class Ability
   end
 
   def super_admin
-    can :manage, :all
+    # Add array argument for defining specific attributes, omitting array will authorize all attributes
+    can :manage, User, [:type, :email, :password, :password_confirmation, :company_id]
+    can :manage, Company
+    can :manage, Task
   end
 
   def task_admin
-    # Add array argument for defining specific attributes, omitting array will authorize all attributes
     can :manage, Task, [:name, :description, :price], company_id: user.company_id
   end
 

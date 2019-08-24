@@ -7,6 +7,12 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
+    @companies = @companies.
+      left_joins(:task_admins, :tasks).
+      select(:id, :name).
+      select("COUNT(DISTINCT users.id) AS task_admin_count").
+      select("COUNT(DISTINCT tasks.id) AS task_count").
+      group(:id, :name)
   end
 
   # GET /companies/1
@@ -30,10 +36,10 @@ class CompaniesController < ApplicationController
 
     respond_to do |format|
       if @company.save
-        format.html { redirect_to @company, notice: 'Company was successfully created.' }
+        format.html { redirect_to companies_path, notice: 'Company was successfully created.' }
         format.json { render :show, status: :created, location: @company }
       else
-        format.html { render :new }
+        format.html { render :new, status: 422 }
         format.json { render json: @company.errors, status: :unprocessable_entity }
       end
     end
@@ -44,10 +50,10 @@ class CompaniesController < ApplicationController
   def update
     respond_to do |format|
       if @company.update(company_params)
-        format.html { redirect_to @company, notice: 'Company was successfully updated.' }
+        format.html { redirect_to companies_path, notice: 'Company was successfully updated.' }
         format.json { render :show, status: :ok, location: @company }
       else
-        format.html { render :edit }
+        format.html { render :edit, status: 422 }
         format.json { render json: @company.errors, status: :unprocessable_entity }
       end
     end
@@ -75,6 +81,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name)
+      params.require(:company).permit(current_ability.permitted_attributes(:manage, @company))
     end
 end

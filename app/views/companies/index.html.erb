@@ -6,6 +6,8 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>TaskAdmins</th>
+      <th>Tasks</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,8 +16,10 @@
     <% @companies.each do |company| %>
       <tr>
         <td><%= company.name %></td>
+        <td><%= company.task_admin_count %></td>
+        <td><%= company.task_count %></td>
         <td><%= link_to 'Edit', edit_company_path(company) %></td>
-        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'All Tasks and TaskAdmins associated with this Company will be destroyed. Are you sure you wan to do this?' } %></td>
       </tr>
     <% end %>
   </tbody>

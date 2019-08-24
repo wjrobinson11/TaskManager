@@ -7,7 +7,7 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @company = current_user.company if current_user.task_admin?
+    @company = current_user.company
   end
 
   # GET /tasks/1
@@ -28,7 +28,7 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
-    # Set company id to the user's company id if not already set
+    # Set company id to the user's company id for TaskAdmin
     @task.company_id ||= current_user.company_id
 
     respond_to do |format|

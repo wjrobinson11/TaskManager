@@ -175,7 +175,7 @@ RSpec.describe TasksController, type: :request do
 
       it "redirect location is the tasks index path" do
         post "/tasks", params: params
-        expect(response.location).to include(tasks_path)
+        expect(response).to redirect_to(tasks_url)
       end
     end
 
@@ -250,7 +250,7 @@ RSpec.describe TasksController, type: :request do
 
       it "redirect location is the tasks index path" do
         put "/tasks/#{task1.id}", params: params
-        expect(response.location).to include(tasks_path)
+        expect(response).to redirect_to(tasks_url)
       end
     end
 

@@ -1,13 +1,13 @@
-class Users::RegistrationsController < Devise::RegistrationsController
-  layout :set_layout
+class Auth::RegistrationsController < Devise::RegistrationsController
+  layout 'auth', only: [:new]
 
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  def new
-    super
-  end
+  # def new
+  #   super
+  # end
 
   # POST /resource
   # def create
@@ -24,10 +24,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  def index
-    @users = User.all
-  end
-
   # DELETE /resource
   # def destroy
   #   super
@@ -41,14 +37,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
-
-  protected
-
-  def set_layout
-    if current_user && current_user.super_admin?
-      'application'
-    else
-      'auth'
-    end
-  end
 end
