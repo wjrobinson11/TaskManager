@@ -25,7 +25,7 @@
           </div>
 
           <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="false" style="height: 1px;">
-            <%- if current_user.is_a?(SuperAdmin) %>
+            <%- if current_user.super_admin? %>
               <ul class="nav navbar-nav">
                 <li class=<%= ("active" if @tasks_tab) %>><a href="/tasks">Tasks</span></a></li>
                 <li class=<%= ("active" if @companies_tab) %>><a href="/companies">Companies</span></a></li>

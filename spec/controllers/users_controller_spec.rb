@@ -37,6 +37,10 @@ RSpec.describe UsersController, type: :request do
     end
 
     context "when user is a task_admin" do
+      before(:each) do
+        sign_in(task_admin1)
+      end
+
       it "returns a 403 error" do
         sign_in(task_admin1)
         get "/users"
@@ -63,6 +67,10 @@ RSpec.describe UsersController, type: :request do
     end
 
     context "when user is a task_admin" do
+      before(:each) do
+        sign_in(task_admin1)
+      end
+
       it "returns a 403 error" do
         sign_in(task_admin1)
         get "/users/new"
@@ -89,6 +97,10 @@ RSpec.describe UsersController, type: :request do
     end
 
     context "when user is a task_admin" do
+      before(:each) do
+        sign_in(task_admin1)
+      end
+
       it "returns a 403 error" do
         get "/users/#{task_admin1.id}/edit"
         expect(response.status).to eq(403)
@@ -155,6 +167,10 @@ RSpec.describe UsersController, type: :request do
           password_confirmation: "password",
           company_id: company2.id
         } }
+      end
+
+      before(:each) do
+        sign_in(task_admin1)
       end
 
       it "returns a 403 error" do
@@ -225,6 +241,10 @@ RSpec.describe UsersController, type: :request do
         } }
       end
 
+      before(:each) do
+        sign_in(task_admin1)
+      end
+
       it "returns a 403 error" do
         put "/users/#{task_admin1.id}", params: params
         expect(response.status).to eq(403)
@@ -252,6 +272,10 @@ RSpec.describe UsersController, type: :request do
     end
     
     context "when user is a TaskAdmin" do
+      before(:each) do
+        sign_in(task_admin1)
+      end
+
       it "returns a 403 error" do
         delete "/users/#{task_admin1.id}"
         expect(response.status).to eq(403)

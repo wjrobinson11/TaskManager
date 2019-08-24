@@ -94,6 +94,10 @@ RSpec.describe CompaniesController, type: :request do
 
 
     context "when user is a task_admin" do
+      before(:each) do
+        sign_in(task_admin1)
+      end
+
       it "returns a 403 error" do
         get "/companies/#{company1.id}/edit"
         expect(response.status).to eq(403)
@@ -151,6 +155,10 @@ RSpec.describe CompaniesController, type: :request do
         { company: {
           name: "Pipe fix"
         } }
+      end
+
+      before(:each) do
+        sign_in(task_admin1)
       end
 
       it "returns a 403 error" do
@@ -212,6 +220,10 @@ RSpec.describe CompaniesController, type: :request do
         } }
       end
 
+      before(:each) do
+        sign_in(task_admin1)
+      end
+
       it "returns a 403 error" do
         put "/companies/#{company1.id}", params: params
         expect(response.status).to eq(403)
@@ -239,6 +251,11 @@ RSpec.describe CompaniesController, type: :request do
     end
     
     context "when user is a TaskAdmin" do
+      before(:each) do
+        sign_in(task_admin1)
+      end
+
+      
       it "returns a 403 error" do
         delete "/companies/#{company1.id}"
         expect(response.status).to eq(403)

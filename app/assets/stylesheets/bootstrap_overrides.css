@@ -1,3 +1,29 @@
-a:hover {
-  color: #678bb1 !important;
+body .navbar-default {
+	background-color: #678bb1;
+}
+
+body .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+	color: white;
+}
+
+body .navbar-default .navbar-nav > li > a:hover, body .navbar-default .navbar-nav > li.active > a:hover {
+	background-color: #94adc7;
+  color: white;
+}
+
+body .navbar-default .navbar-nav > .active > a, body .navbar-default .navbar-nav > .active > a:hover, body .navbar-default .navbar-nav > .active > a:focus {
+	background-color: #94adc7;
+}
+
+body .navbar-default .navbar-collapse .navbar-nav > .open > a, body .navbar-default .navbar-nav > .open > a:hover, body .navbar-default .navbar-nav > .open > a:focus {
+	background-color: #94adc7;
+}
+
+body .dropdown-menu > li > a:hover, body .dropdown-menu > li > a:focus {
+	background-color: white;
+	color: #94adc7;
+}
+
+body a:hover, body a:focus {
+	color: #94adc7;
 }

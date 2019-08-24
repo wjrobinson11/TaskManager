@@ -12,7 +12,7 @@ class Ability
   protected
 
   def set_permissions
-    permissions_method = user.present? ? user.class.to_s.underscore : 'guest'
+    permissions_method = user.class.to_s.underscore
     send permissions_method
   end
 
@@ -25,9 +25,5 @@ class Ability
 
   def task_admin
     can :manage, Task, [:name, :description, :price], company_id: user.company_id
-  end
-
-  def guest
-    # Add guest permissions if needed
   end
 end
